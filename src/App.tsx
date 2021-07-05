@@ -31,32 +31,17 @@ export default function App() {
             return [resultHours, resultMinutes, resultSeconds]
         }, [0, 0, 0])
 
-    return <Box p={"16px"}>
+    const result = `${resultHours}h${resultMinutes}m${resultSeconds}s`
+
+    return <Shell>
         <Typography variant={"h2"}>Time Calculator</Typography>
         <Box
             display={"grid"}
             gridTemplateColumns={"auto"}
             gridGap={"16px"}
             p={"32px"}
+            width={"100%"}
         >
-            <Typography variant={"h4"}>Input</Typography>
-            <TextField
-                variant={"filled"}
-                multiline={true}
-                rows={10}
-                value={input}
-                onChange={event => setInput(event.target.value as string)}
-            />
-            <Typography variant={"h4"}>Line Format</Typography>
-            <Select
-                variant={"filled"}
-                value={selectedFormat}
-                onChange={event => setSelectedFormat(event.target.value as string)}
-            >
-                {lineFormats.map(format =>
-                    <MenuItem key={format} value={format}>{format}</MenuItem>
-                )}
-            </Select>
             <Typography variant={"h4"}>Operation</Typography>
             <Select
                 variant={"filled"}
@@ -67,32 +52,47 @@ export default function App() {
                     <MenuItem key={operation} value={operation}>{operation}</MenuItem>
                 )}
             </Select>
-            <Typography variant={"h4"}>Result</Typography>
-            <Box
-                display={"grid"}
-                gridTemplateColumns={"auto auto 1fr"}
-                gridGap={"8px"}
-                alignItems={"center"}
+            <Typography variant={"h4"}>Line Format</Typography>
+            <Select
+                variant={"filled"}
+                value={selectedFormat}
+                onChange={event => setSelectedFormat(event.target.value as string)}
             >
-                <Typography variant={"h6"}>Hours</Typography>
-                <TextField
-                    variant={"filled"}
-                    value={resultHours}
-                />
-                <Box/>
-                <Typography variant={"h6"}>Minutes</Typography>
-                <TextField
-                    variant={"filled"}
-                    value={resultMinutes}
-                />
-                <Box/>
-                <Typography variant={"h6"}>Seconds</Typography>
-                <TextField
-                    variant={"filled"}
-                    value={resultSeconds}
-                />
-                <Box/>
-            </Box>
+                {lineFormats.map(format =>
+                    <MenuItem key={format} value={format}>{format}</MenuItem>
+                )}
+            </Select>
+            <Typography variant={"h4"}>Input</Typography>
+            <TextField
+                variant={"filled"}
+                multiline={true}
+                rows={10}
+                value={input}
+                onChange={event => setInput(event.target.value as string)}
+            />
+            <Typography variant={"h4"}>Result</Typography>
+            <TextField
+                variant={"filled"}
+                value={result}
+            />
+        </Box>
+    </Shell>
+}
+
+function Shell(params: { children: any }) {
+    return <Box
+        display={"grid"}
+        justifyItems={"center"}
+        width={"100%"}
+    >
+        <Box
+            display={"grid"}
+            justifyItems={"center"}
+            p={"32px"}
+            width={"calc(100% - 32px)"}
+            maxWidth={"960px"}
+        >
+            {params.children}
         </Box>
     </Box>
 }
