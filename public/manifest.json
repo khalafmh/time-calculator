@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Time Calculator",
+  "name": "Time Calculator by Mahdi AlKhalaf",
   "icons": [
     {
       "src": "favicon.ico",
