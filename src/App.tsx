@@ -64,6 +64,7 @@ export default function App() {
             </Select>
             <Typography variant={"h4"}>Input</Typography>
             <TextField
+                inputProps={{"data-testid": "input"}}
                 variant={"filled"}
                 multiline={true}
                 rows={10}
@@ -72,6 +73,7 @@ export default function App() {
             />
             <Typography variant={"h4"}>Result</Typography>
             <TextField
+                inputProps={{"data-testid": "output"}}
                 variant={"filled"}
                 value={result}
             />
