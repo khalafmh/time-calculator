@@ -14,7 +14,7 @@ export default function App() {
         .map(line => line.trim())
         .filter(line => !_.isEmpty(line))
         .map(line => {
-            const regex = /^((?<hours>\d+)h)?((?<minutes>\d+)m)?((?<seconds>\d+)m)?$/g;
+            const regex = /^((?<hours>\d+)h)?((?<minutes>\d+)m)?((?<seconds>\d+)s)?$/g;
             const match = regex.exec(line);
             const hours = parseInt(match?.groups?.hours || "0");
             const minutes = parseInt(match?.groups?.minutes || "0");
